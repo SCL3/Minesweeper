@@ -1,5 +1,5 @@
 /* code crée le 08/05/22
-Salut c'est valentin la tortue
+
 */
 
 #include <stdio.h>
@@ -414,10 +414,18 @@ void display(int line, int column, int bomb, int flag, Cell** tab, int t_or_f){ 
 				}
 			}
 			else{	
-				printf("\033[0;31m"); 
-				printf("~");
-				printf("\033[0m");
-				printf("|");
+				if(t_or_f != 1 || tab[i][k].bomb == 9 ){
+					printf("\033[0;31m"); 
+					printf("~");
+					printf("\033[0m");
+					printf("|");
+				}
+				else{
+					printf("\033[0;31m"); 
+					printf("X");
+					printf("\033[0m");
+					printf("|");
+				}
 			}
 		}
 		printf("\n");
