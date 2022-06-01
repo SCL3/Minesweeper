@@ -604,7 +604,7 @@ int main(){
 	printf("nombre de secondes %ld\n", score);
 	//Game end
 	if(exit == 2){
-		if(line == 10 && col == 10 && bomb == 1){
+		if(line == 10 && col == 10 && bomb == 10){
 			write_score(score, 1);
 		}
 		if(line == 16 && col == 16 && bomb == 40){
