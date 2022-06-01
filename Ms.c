@@ -47,14 +47,22 @@ Cell** create(int line, int column){
 
 //////// Score  /////////////////////
 
-void write_score(unsigned long score){
+void write_score(unsigned long score, int difficulty){
 	char pseudo[50];
 	printf("What is your pseudo ?\n");
 	scanf("%s",&pseudo);
-	FILE* file_score;
-	file_score = fopen("score.txt", "w+");
-	fprintf(file_score, "%s : %lu ",pseudo, score);
-	fprintf(file_score, "\n");
+	FILE* file_score_beg;
+	FILE* file_score_int;
+	file_score_beg = fopen("score_beg.txt", "a+");
+	file_score_int = fopen("score_int.txt", "a+");
+	if ( difficulty == 1){
+		fprintf(file_score_beg, "%s : %lu ",pseudo, score);
+		fprintf(file_score_beg, "\n");
+	}
+	else{
+		fprintf(file_score_int, "%s : %lu ",pseudo, score);
+		fprintf(file_score_int, "\n");
+	}
 }
 
 /////////// clear////////////////////
@@ -596,7 +604,12 @@ int main(){
 	printf("nombre de secondes %ld\n", score);
 	//Game end
 	if(exit == 2){
-		write_score(score);
+		if(line == 10 && col == 10 && bomb == 1){
+			write_score(score, 1);
+		}
+		if(line == 16 && col == 16 && bomb == 40){
+			write_score(score, 2);
+		}
 	}
 	
 	return 0;
