@@ -530,6 +530,9 @@ int main(){
 	count_bomb(tab, line, col);
 		
 	// Game start 
+
+	time_t start = time(NULL);
+
 	display(line, col, bomb, flag_rem, tab, exit);
 	while(exit == -1){
 		while(plant < 1 || plant > 2){
@@ -563,6 +566,11 @@ int main(){
 		c = -1;
 		plant = -1;
 	}
+	time_t end = time(NULL);
+	unsigned long score = difftime(end, start);
+	printf("nombre de secondes %ld\n", score);
+	//Game end
 
+	
 	return 0;
 }
