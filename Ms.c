@@ -1,5 +1,5 @@
-/* code crée le 08/05/22
-
+/* code created the 08/05/22
+   by Valentin FERNANDES and Simon CHANTHRABOUTH-LIEBBE
 */
 
 #include <stdio.h>
@@ -468,8 +468,15 @@ int ask_col(int col_max){
 
 void plant_a_flag(int i, int j, Cell** tab, int* flag){
 	if(tab[i][j].flag == 0){
-		tab[i][j].flag = 1;
-		*flag -=1;
+		if(tab[i][j].hide == 0){
+			printf("\033[0;31m"); 
+			printf("The cell is already safe\n");
+			printf("\033[0m");
+		}
+		else{
+			tab[i][j].flag = 1;
+			*flag -=1;
+		}
 	}
 	else{
 		tab[i][j].flag = 0;
