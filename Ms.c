@@ -45,7 +45,17 @@ Cell** create(int line, int column){
 }
 
 
+//////// Score  /////////////////////
 
+void write_score(unsigned long score){
+	char pseudo[50];
+	printf("What is your pseudo ?\n");
+	scanf("%s",&pseudo);
+	FILE* file_score;
+	file_score = fopen("score.txt", "w+");
+	fprintf(file_score, "%s : %lu ",pseudo, score);
+	fprintf(file_score, "\n");
+}
 
 /////////// clear////////////////////
 
@@ -196,18 +206,18 @@ void count_bomb(Cell** table, int nmb_lines, int nmb_colomns){
 
 int lose(){
 /* The losing function */
-	printf("\033[0;31m");
-	printf("You Loose !\n");
+	printf("\033[0;31m\n");
+	printf("You Loose !\n\n");
 	printf("\033[0m");
 	return 1;
 }
 
 int win(){
 /* The wining function */
-	printf("\033[0;32m"); 
-	printf("You win !\n");
+	printf("\033[0;32m\n"); 
+	printf("You win !\n\n");
 	printf("\033[0m");
-	return 1;
+	return 2;
 }
 
 void show_bomb_l(int line, int col, Cell** tab){
@@ -430,11 +440,18 @@ void display(int line, int column, int bomb, int flag, Cell** tab, int t_or_f){ 
 		}
 		printf("\n");
 	}
-	if (t_or_f != 1){
+	if (t_or_f == -1){
 		printf("\n%d Bomb remaining.\n\n", bomb+flag);
 	}
-	else{
+	else if (t_or_f == 1){
+		printf("\033[0;31m");
 		printf("Wanna retry ? :P\n");
+		printf("\033[0m");
+	}
+	else{
+		printf("\033[0;32m");
+		printf("Congratulation !\n");
+		printf("\033[0m");
 	}
 	
 }
@@ -489,13 +506,14 @@ void plant_a_flag(int i, int j, Cell** tab, int* flag){
 int main(){	
 	srand(time(NULL));
 	int bomb = -1;	
-	int exit = -1;
+	int exit = -1;  // 1 : lose; 2 : win
 	int line = -1,col = -1; // For initializing the table
 	int l = -1,c = -1; // line and column for the game
 	int cell_rem;
 	int lvl = -1;
 	int plant = -1;
 	int flag_rem = 0;
+	unsigned long score;
 	Cell** tab = NULL;
 	while(lvl <1 || lvl > 3){
 		printf("Choose your level : \n1 : Beginner\n2 : Intermediate\n3 : Custom level\n");
@@ -574,10 +592,12 @@ int main(){
 		plant = -1;
 	}
 	time_t end = time(NULL);
-	unsigned long score = difftime(end, start);
+	score = difftime(end, start);
 	printf("nombre de secondes %ld\n", score);
 	//Game end
-
+	if(exit == 2){
+		write_score(score);
+	}
 	
 	return 0;
 }
