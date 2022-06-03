@@ -2,6 +2,8 @@
 
 
 
+
+// the following function creates a line * column array of Cell.
 Cell** create(int line, int column){
 	Cell** tab = NULL;
 	tab = malloc(line * sizeof(Cell*));

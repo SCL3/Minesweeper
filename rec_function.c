@@ -2,6 +2,8 @@
 
 ///////// Rec function //////////////////////////////////////
 
+
+// This procedure uses recursivity to show every cell that the player should be able to see following the game rules.
 void seek(int i, int j, Cell** tab, int* cell_rem){
 	if(tab[i][j].counter != 0 && tab[i][j].bomb == 0 && tab[i][j].hide == 1 && tab[i][j].flag == 0){
 		tab[i][j].hide = 0;

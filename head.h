@@ -1,5 +1,7 @@
-/* code created the 08/05/22
+/* code created the 08/05/22, latest update the 03/06/22
    by Valentin FERNANDES and Simon CHANTHRABOUTH-LIEBBE
+   We made a Minesweeper game for the CY Tech informatic project 2021/2022
+
 */
 
 #include <stdio.h>

@@ -4,6 +4,7 @@
 
 //// Plant a flag function ///////////////////////////////////
 
+// This function will plant a flag for the player's chosen Cell
 void plant_a_flag(int i, int j, Cell** tab, int* flag){
 	if(tab[i][j].flag == 0){
 		if(tab[i][j].hide == 0){

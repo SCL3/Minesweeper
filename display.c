@@ -4,7 +4,8 @@
 
 //// Display function  /////////////////////////////////////////////
 
-void display(int line, int column, int bomb, int flag, Cell** tab, int t_or_f){ //dès que line > col = problème
+// This procedure will display the array, and all the information about the cell (if there's a flag, a bomb ...)
+void display(int line, int column, int bomb, int flag, Cell** tab, int t_or_f){
 	//display a two-dimmensional array
 	printf("Here is your grid :\n");
 	printf("    ");

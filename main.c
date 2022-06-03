@@ -1,11 +1,11 @@
 #include "head.h"
 
 
-//// Principal function /////////////////////////////////////////
+//// Main function /////////////////////////////////////////
 
 int main(){	
 	srand(time(NULL));
-	int bomb = -1;	
+	int bomb = -1;  // For initializing the number of bomb for the game	
 	int exit = -1;  // 1 : lose; 2 : win
 	int line = -1,col = -1; // For initializing the table
 	int l = -1,c = -1; // line and column for the game
@@ -16,6 +16,7 @@ int main(){
 	unsigned long score;
 	Cell** tab = NULL;
 	while(lvl <1 || lvl > 3){
+	// Ask the level difficulty to the player
 		printf("Choose your level : \n1 : Beginner\n2 : Intermediate\n3 : Custom level\n");
 		scanf("%d", &lvl);
 		clear(stdin);
@@ -31,6 +32,7 @@ int main(){
 		bomb = 40;	
 	} 
 	else{
+	// If he choses a custom level, the player needs to put the number of line and column
 		while(line < 2){
 			printf("Number of line (>=2) ? ");	
 			scanf("%d", &line);
@@ -45,6 +47,7 @@ int main(){
 	tab = create(line, col);
 	cell_rem = line * col;
 	while(bomb < 1 || bomb > line*col-1){	
+	// Ask to the player the number of bomb he wants
 		printf("Number of bombs (1 or more) ? ");
 		scanf("%d", &bomb);
 		clear(stdin);
@@ -56,11 +59,13 @@ int main(){
 		
 	// Game start 
 
-	time_t start = time(NULL);
+	time_t start = time(NULL);  // initializing the timer
 
 	display(line, col, bomb, flag_rem, tab, exit);
 	while(exit == -1){
+	//As long as the player has neither won nor lost
 		while(plant < 1 || plant > 2){
+		// Ask to the player if he wants to plant a flag
 			printf("Do you want to plant or remove a flag ?\n1 : Yes\n2 : No\n");
 			scanf("%d", &plant);
 			clear(stdin);
@@ -72,6 +77,7 @@ int main(){
 		}
 		else{
 			if(tab[l][c-65].flag == 1){
+			// Check if there's a flag on the cell already
 				printf("\033[0;31m");
 				printf("There is a flag on the cell, choose another one.\n");
 				printf("\033[0m");
@@ -91,11 +97,12 @@ int main(){
 		c = -1;
 		plant = -1;
 	}
-	time_t end = time(NULL);
+	time_t end = time(NULL);  // Stop the timer 
 	score = difftime(end, start);
 	printf("nombre de secondes %ld\n", score);
 	//Game end
 	if(exit == 2){
+	// If the player won, this functions will save his score (if he played on easy or intermediate 	difficulty only)
 		if(line == 10 && col == 10 && bomb == 10){
 			write_score(score, 1);
 		}

@@ -1,3 +1,4 @@
+// Structure for a cell, filled with all the information we need, to describe each cells state
 typedef struct{
 	int counter;  // number of bomb(s) next to the cell: 0 => 0 bomb around, 1 => 1 bomb...
 			

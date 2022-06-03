@@ -4,6 +4,8 @@
 
 //////// Score  /////////////////////
 
+
+// This procedure will save the player's score in the right file if he wins.
 void write_score(unsigned long score, int difficulty){
 	char pseudo[50];
 	printf("What is your pseudo ?\n");

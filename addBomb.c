@@ -1,9 +1,9 @@
 #include "head.h"
 
 
-
 /////// add bombs /////////////////////////////////////
 
+// This function adds bombs randomly
 void add_bomb(int line, int column, int nmb_bomb, Cell** tab){
 	int bomb_line, bomb_col, bombo;
 	bombo = nmb_bomb;

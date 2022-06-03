@@ -3,14 +3,16 @@
 
 //// count_bomb //////////////////////////////////////////////
 
+
+// This function adds +1 to every bomb-cell's neighbors.
 void count_bomb(Cell** table, int nmb_lines, int nmb_colomns){	
 	for(int i=0; i<nmb_colomns;i++){
 		for(int j=0; i<nmb_lines; i++){
 			table[i][j].counter = 0;
 		}
 	}
-	for(int i=0; i<nmb_lines;i++){// de base : nmb_colmns
-		for(int j=0; j<nmb_colomns; j++){;//de base : nmb_lines
+	for(int i=0; i<nmb_lines;i++){
+		for(int j=0; j<nmb_colomns; j++){;
 			if(table[i][j].bomb == 9){
 				if(table[i][j].edge == 0){//a center cell
 					table[i-1][j-1].counter ++;//up left
