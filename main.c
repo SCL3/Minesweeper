@@ -33,12 +33,12 @@ int main(){
 	} 
 	else{
 	// If he choses a custom level, the player needs to put the number of line and column
-		while(line < 2){
+		while(line < 2 || line > 100){
 			printf("Number of line (>=2) ? ");	
 			scanf("%d", &line);
 			clear(stdin);
 		}
-		while(col < 2){
+		while(col < 2) || col > 26){
 			printf("Number of column (>=2) ? ");
 			scanf("%d", &col);
 			clear(stdin);
@@ -99,7 +99,7 @@ int main(){
 	}
 	time_t end = time(NULL);  // Stop the timer 
 	score = difftime(end, start);
-	printf("nombre de secondes %ld\n", score);
+	printf("It took you %ld to finish\n", score);
 	//Game end
 	if(exit == 2){
 	// If the player won, this functions will save his score (if he played on easy or intermediate 	difficulty only)
